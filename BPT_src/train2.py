@@ -2,7 +2,7 @@ from torch import nn
 
 from dataset import BoardDataset
 from evaluate2 import evaluate2
-from main2_utils import get_seg_property
+from utils import get_seg_property
 import torch
 from torch.utils.data import DataLoader
 

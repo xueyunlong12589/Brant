@@ -7,6 +7,7 @@ from sklearn.metrics import accuracy_score, fbeta_score
 from torchmetrics import MeanAbsolutePercentageError, MeanAbsoluteError, MeanSquaredError
 from pretrain.pre_utils import compute_power
 from collections import OrderedDict
+from scipy.signal import hilbert
 
 
 # used in train1/2/3
@@ -242,3 +243,20 @@ def get_metric(metr, metr_name):
         return metr.rec
     else:
         raise NotImplementedError
+
+
+def get_seg_property(args, fut_seg):
+    w = torch.fft.fft(fut_seg.cpu(), dim=-1)
+    f = torch.fft.fftfreq(fut_seg.cpu().shape[-1])
+
+    freq = [ f[ int(torch.argmax(w[b,:].abs())) ]
+             for b in range(fut_seg.shape[0])
+            ]
+
+    analytic_signal = hilbert(fut_seg.cpu())
+    instantaneous_phase = np.angle(analytic_signal)
+
+    phase = torch.tensor(instantaneous_phase)
+    freq  = torch.tensor(freq).reshape(-1, 1)
+    return phase.to(args.device), \
+           freq .to(args.device)

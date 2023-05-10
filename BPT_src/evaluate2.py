@@ -1,9 +1,7 @@
 import torch
 from torch.utils.data import DataLoader
 from dataset import BoardDataset
-
-from main2_utils import get_seg_property
-from utils import UnsupervisedMetrics, PhFreqMetrics, get_emb
+from utils import UnsupervisedMetrics, PhFreqMetrics, get_emb, get_seg_property
 
 
 def evaluate2(args, val_data_list, modules, patients, his_len, fut_len, pred_head, ):
