@@ -1,4 +1,4 @@
-# BPT: A Foundation on Brain Signals
+# BPT: A Foundation Model for Intracranial Neural Signal
 BPT is a foundation moded in the field of intracranial recordings, which learns powerful representations of SEEG signals.
 
 ### Source Code
