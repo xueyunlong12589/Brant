@@ -1,5 +1,5 @@
 # BPT: A Foundation Model for Intracranial Neural Signal
-BPT is a foundation moded in the field of intracranial recordings, which learns powerful representations of intracranial neural signals.
+BPT is a foundation model in the field of intracranial recordings, which learns powerful representations of intracranial neural signals.
 
 ### Source Code
 
@@ -17,3 +17,5 @@ The source code of BPT is provided in `BPT_src`.
 * You can find the usage of the pre-trained embeddings in  `BPT_src/utils.py`: `get_emb()`
 
 
+### Disclaimer
+The pre-training data for the BPT model was collected during routine treatment procedure of epilepsy patients from a hospital, and is intended solely for medical or research use. The pre-trained weights of BPT are released only for medical or research purposes and must not be subjected to any form of misuse. 

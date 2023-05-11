@@ -23,22 +23,21 @@ def feed_forward(time_enc, ch_enc,
     power = batch[1]
 
     # time encoder capture long-term dependency
-
     time_z = time_enc(mask, data, power,
                       need_mask=True,
                       mask_by_ch=mask_by_ch,
                       rand_mask=rand_mask,
                       mask_len=mask_len,
-                      use_power=use_power)  # time_z.shape: bat_size * ch_num, seq_len, d_model
+                      use_power=use_power)  
 
     _, _, d_model = time_z.shape
-    time_z = time_z.view(bat_size, ch_num, seq_len, d_model)    # time_z.shape: bat_size, ch_num, seq_len, d_model
-    time_z = torch.transpose(time_z, 1, 2)                      # time_z.shape: bat_size, seq_len, ch_num, d_model
-    time_z = time_z.reshape(bat_size*seq_len, ch_num, d_model)  # time_z.shape: bat_size*seq_len, ch_num, d_model
+    time_z = time_z.view(bat_size, ch_num, seq_len, d_model)    
+    time_z = torch.transpose(time_z, 1, 2)                      
+    time_z = time_z.reshape(bat_size*seq_len, ch_num, d_model)  
 
-    _, rec = ch_enc(time_z)  # rec.shape: bat_size*seq_len, ch_num, seg_len // rec_down_samp_rate
+    _, rec = ch_enc(time_z)             # rec.shape: bat_size*seq_len, ch_num, seg_len // rec_down_samp_rate
     rec = rec.view(bat_size, seq_len, ch_num, seg_len // rec_down_samp_rate)
-    rec = torch.transpose(rec, 1, 2)  # transpose back  rec.shape: bat_size, ch_num, seq_len, seg_len
+    rec = torch.transpose(rec, 1, 2)    # transpose back  rec.shape: bat_size, ch_num, seq_len, seg_len
     rec = rec.reshape(bat_size*ch_num*seq_len, seg_len // rec_down_samp_rate)
 
     data = data.view(bat_size * ch_num * seq_len, seg_len)[::rec_down_samp_rate]

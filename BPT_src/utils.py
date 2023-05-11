@@ -19,8 +19,8 @@ def get_emb(x, power, encoder_t, encoder_ch):
 
     _, _, d_model = time_z.shape
     time_z = time_z.reshape(bat_size, ch_num, seq_len, d_model)  # time_z.shape: new_bat, ch_num, seq_len, d_model
-    time_z = torch.transpose(time_z, 1, 2)  # time_z.shape: new_bat, seq_len, ch_num, d_model
-    time_z = time_z.reshape(bat_size*seq_len, ch_num, d_model)  # time_z.shape: new_bat*seq_len, ch_num, d_model
+    time_z = torch.transpose(time_z, 1, 2)                       # time_z.shape: new_bat, seq_len, ch_num, d_model
+    time_z = time_z.reshape(bat_size*seq_len, ch_num, d_model)   # time_z.shape: new_bat*seq_len, ch_num, d_model
 
     emb, _ = encoder_ch(time_z)  # emb.shape: new_bat*seq_len, ch_num, d_model
 

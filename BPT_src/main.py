@@ -64,7 +64,7 @@ def model_prepare():
     emb_dim = args.d_model
 
     if args.main_task == 1:
-        mlp = MLP(in_dim=emb_dim, out_dim=2).to(args.device)  # seizure pred
+        mlp = MLP(in_dim=emb_dim, out_dim=2).to(args.device)
         module += (mlp, )
 
     elif args.main_task == 2:
@@ -230,7 +230,7 @@ if __name__ == '__main__':
     parser.add_argument("--test_ratio", type=float, default=0.2)
 
     parser.add_argument("--main2_mode", type=str, default='finetune')  # 'finetune' or 'probe'
-    parser.add_argument("--main2_task", type=str, default='ph_freq')  # 'long' or 'short' or 'ph_freq'
+    parser.add_argument("--main2_task", type=str, default='ph_freq')   # 'long' or 'short' or 'ph_freq'
     parser.add_argument("--main2_long_term_pred_len", type=int, default=20)
     parser.add_argument("--main2_short_term_pred_len", type=int, default=2)
     parser.add_argument("--main2_long_term_dr", type=int, default=1)
