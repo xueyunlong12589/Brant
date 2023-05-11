@@ -57,7 +57,7 @@ def evaluate2(args, val_data_list, modules, patients, his_len, fut_len, pred_hea
                     pred_freq = pred_head_freq(emb)
                     pred_ph   = pred_head_ph(emb)
 
-                    ph, freq = get_seg_property(basic_cfg, fut_x.reshape(bat_size*ch_num, -1) )
+                    ph, freq = get_seg_property(args, fut_x.reshape(bat_size*ch_num, -1) )
                     mean, std = torch.mean(ph,   dim=-1, keepdim=True), torch.std(ph,   dim=-1, keepdim=True)
                     ph   = (ph   - mean) / std
 

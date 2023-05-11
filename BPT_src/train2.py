@@ -1,11 +1,9 @@
+import torch
 from torch import nn
-
+from torch.utils.data import DataLoader
 from dataset import BoardDataset
 from evaluate2 import evaluate2
 from utils import get_seg_property
-import torch
-from torch.utils.data import DataLoader
-
 from utils import load_data, get_emb, split_data_trvlts
 
 
@@ -18,7 +16,7 @@ def train2(args, modules, pred_head):
         enc_lr = args.ft_lr
     else:
         enc_lr = 0
-    head_lr = args.lr * 3
+    head_lr = args.lr
 
     if args.main2_task == 'ph_freq':
         pred_head_freq, pred_head_ph = pred_head

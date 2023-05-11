@@ -1,11 +1,8 @@
+import torch
 from torch import nn
-
+from torch.utils.data import DataLoader
 from dataset import BoardDataset
 from evaluate3 import evaluate3
-
-import torch
-from torch.utils.data import DataLoader
-
 from utils import load_data, get_emb, split_data_trvlts
 
 

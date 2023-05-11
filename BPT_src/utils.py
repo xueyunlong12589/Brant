@@ -10,7 +10,6 @@ from collections import OrderedDict
 from scipy.signal import hilbert
 
 
-# used in train1/2/3
 def get_emb(x, power, encoder_t, encoder_ch):
     bat_size, ch_num, seq_len, seg_len = x.shape
 

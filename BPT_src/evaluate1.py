@@ -1,7 +1,5 @@
 import torch
 from torch.utils.data import DataLoader
-
-
 from dataset import BoardDataset
 from utils import Metrics, get_emb
 
