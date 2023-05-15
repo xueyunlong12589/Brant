@@ -35,7 +35,7 @@ class InputEmbedding(nn.Module):
                 nn.Dropout(0.5),
                 nn.MaxPool1d(4, 2),
                 nn.Conv1d(c_dim, c_dim*2, 10, 5),
-                nn.ReLU(inplace=True),
+                nn.ReLU(inplace=True),  
                 nn.Dropout(0.5),
                 nn.MaxPool1d(4, 2),
             )
