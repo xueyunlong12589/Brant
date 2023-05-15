@@ -81,7 +81,7 @@ class InputEmbedding(nn.Module):
         masked_x = masked_x.view(bat_size * ch_num, seq_len, seg_len)
         # projection
         if self.mode == 'cnn':
-            masked_x = masked_x.view(bat_size*ch_num*seq_len, 1, seg_len)   # 不用
+            masked_x = masked_x.view(bat_size*ch_num*seq_len, 1, seg_len)
             input_emb = torch.mean(self.cnn(masked_x), dim=-1)
             input_emb = self.cnn_proj(input_emb)
             input_emb = torch.transpose(input_emb, 1, 2)
