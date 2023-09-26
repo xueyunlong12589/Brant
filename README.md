@@ -1,4 +1,4 @@
-# Brant: A Foundation Model for Intracranial Neural Signal
+# Brant: Foundation Model for Intracranial Neural Signal
 Brant is a foundation model in the field of intracranial recordings, which learns powerful representations of intracranial neural signals.
 
 ### Source Code
