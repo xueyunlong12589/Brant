@@ -24,7 +24,7 @@ def get_df(data_path, pat_ids):
 def interp(data_path, df, up_win_size):
     length = len(df)
     for seg_idx in range(length):
-        seg_meta = df.iloc[seg_idx]  # 该段的metadata
+        seg_meta = df.iloc[seg_idx]
         seg_id = seg_meta['segment_id']
 
         # y = seg_meta['category_id']
